@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace DicAndHMaps
 {
-    class Ransome
+    class CommonInTwoStrings
     {
-        public static void checkMagazine(string[] magazine, string[] note)
+        static string twoStrings(string s1, string s2)
         {
-            var dictMagazine = new Dictionary<string, int>();
-            var dictNote = new Dictionary<string, int>();
+            var magazine = s1.ToCharArray();
+            var note = s2.ToCharArray();
+
+            var dictMagazine = new Dictionary<char, int>();
+            var dictNote = new Dictionary<char, int>();
 
             foreach (var item in magazine)
             {
@@ -39,14 +42,13 @@ namespace DicAndHMaps
 
             foreach (var item in dictNote)
             {
-                if (!dictMagazine.ContainsKey(item.Key) || dictMagazine[item.Key] < item.Value)
+                if (dictMagazine.ContainsKey(item.Key))
                 {
-                    Console.WriteLine("No");
-                    return;
-                }                
+                    return "YES";
+                }
             }
 
-            Console.WriteLine("Yes");
-        }       
+            return "NO";
+        }
     }
 }
